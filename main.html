@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CR Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .logo img {
+            margin-top: -20px;
+            width: 150px;
+        }
+    
+        header {
+            display: flex;
+            background-color: rgb(0, 150, 136);
+            justify-content: space-between;
+            padding: 10px;
+            color: white;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .logo {
+            flex: 1;
+        }
+    
+        .title {
+            flex: 2;
+            text-align: center;
+        }
+    
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+    
+        nav {
+            flex: 1;
+        }
+    
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+    
+        nav ul li {
+            margin: 0;
+        }
+    
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            transition: background-color 0.3s ease;
+        }
+    
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+    </style>
+    
+    <body>
+        <!-- Header Section -->
+        <header>
+            <div class="logo">
+                <img src="logo-transparent-png.png" alt="logo">
+            </div>
+            <div class="title">
+                <h1>CR Management System</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Menu Options -->
+            <div class="menu">
+                <button onclick="showSection('attendance')">Log Attendance</button>
+                <button id="lectureWiseAttendanceBtn" onclick="showSection('dummyAttendance')">Lecture Wise Attendance</button>
+                <button onclick="showSection('complaints')">File Complaints</button>
+                <button onclick="showSection('notes')">Share Notes</button>
+                <button onclick="showSection('updateStudents')">ADD Students</button>
+            </div>
+
+            <!-- Sections -->
+            <div id="attendance" class="section">
+                <h2>Log Attendance</h2>
+                <form id="attendanceForm">
+                    <label for="course">Course:</label>
+                    <select id="course" required>
+                        <option value="">Select Course</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="M.Tech">M.Tech</option>
+                        <option value="MBA">MBA</option>
+                        <option value="BBA">BBA</option>
+                        <option value="BCA">BCA</option>
+                        <option value="MCA">MCA</option>
+                    </select>
+
+                    <label for="branch">Branch:</label>
+                    <select id="branch" required>
+                        <option value="">Select Branch</option>
+                        <option value="CSE">Computer Science Engineering (CSE)</option>
+                        <option value="ECE">Electronics and Communication Engineering (ECE)</option>
+                        <option value="ME">Mechanical Engineering (ME)</option>
+                        <option value="CE">Civil Engineering (CE)</option>
+                        <option value="EE">Electrical Engineering (EE)</option>
+                        <option value="IT">Information Technology (IT)</option>
+                    </select>
+
+                    <label for="year">Year:</label>
+                    <select id="year" required>
+                        <option value="">Select Year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+
+                    <label for="rollNumber">Roll Number:</label>
+                    <input type="text" id="rollNumber" required>
+
+                    <label for="section">Section:</label>
+                    <select id="section" required>
+                        <option value="">Select Section</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                    </select>
+
+                    <label for="studentName">Student Name:</label>
+                    <input type="text" id="studentName" required>
+
+                    <label for="status">Attendance Status:</label>
+                    <select id="status" required>
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                    </select>
+
+                    <button type="submit">Submit Attendance</button>
+                </form>
+                <div id="attendanceLog"></div>
+            </div>
+           
+            <!-- Lecture Wise Attendance Section -->
+            <!-- Attendance Section -->
+<div id="attendanceSection" class="section">
+    <h2>Log Attendance for Lectures</h2>
+    <form id="attendanceForm">
+        <label for="courseAttendance">Course:</label>
+        <select id="courseAttendance" required>
+            <option value="">Select Course</option>
+            <option value="B.Tech">B.Tech</option>
+            <option value="M.Tech">M.Tech</option>
+            <option value="MBA">MBA</option>
+            <option value="BBA">BBA</option>
+            <option value="BCA">BCA</option>
+            <option value="MCA">MCA</option>
+        </select>
+
+        <label for="branchAttendance">Branch:</label>
+        <select id="branchAttendance" required>
+            <option value="">Select Branch</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="ME">ME</option>
+            <option value="CE">CE</option>
+            <option value="EE">EE</option>
+            <option value="IT">IT</option>
+        </select>
+
+        <label for="yearAttendance">Year:</label>
+        <select id="yearAttendance" required>
+            <option value="">Select Year</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+        </select>
+
+        <label for="sectionAttendance">Section:</label>
+        <select id="sectionAttendance" required>
+            <option value="">Select Section</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+        </select>
+
+        <button type="button" id="fetchStudentsButton">Fetch Students</button>
+    </form>
+
+    <div id="studentRows"></div>
+    <button type="submit" id="submitAttendance">Submit Attendance</button>
+</div>
+
+<script>
+// Fetch students based on selections
+document.getElementById('fetchStudentsButton').addEventListener('click', function() {
+    const course = document.getElementById('courseAttendance').value;
+    const branch = document.getElementById('branchAttendance').value;
+    const year = document.getElementById('yearAttendance').value;
+    const section = document.getElementById('sectionAttendance').value;
+
+    if (course && branch && year && section) {
+        fetch(`fetch_students.php?course=${course}&branch=${branch}&year=${year}&section=${section}`)
+            .then(response => response.json())
+            .then(data => {
+                const studentRows = document.getElementById('studentRows');
+                studentRows.innerHTML = ''; // Clear previous data
+
+                data.forEach(student => {
+                    const row = document.createElement('div');
+                    row.innerHTML = `
+                        <label>${student.student_name} (${student.roll_number})</label>
+                        <input type="radio" name="${student.roll_number}" value="Present"> Present
+                        <input type="radio" name="${student.roll_number}" value="Absent"> Absent
+                    `;
+                    studentRows.appendChild(row);
+                });
+            });
+    } else {
+        alert("Please select all fields.");
+    }
+});
+</script>
+
+            <!-- File Complaints Section -->
+            <div id="complaints" class="section">
+                <h2>File a Complaint</h2>
+                <form id="complaintForm" method="POST" action="save_complaint.php">
+                    <label for="complaint">Enter your complaint:</label>
+                    <textarea id="complaint" name="complaintText" placeholder="Describe your issue here..." required></textarea>
+                    <input type="submit" value="Submit Complaint">
+                </form>
+                </div>
+            <!-- Share Notes Section -->
+            <div id="notes" class="section" style="display: none;">
+                <h2>Share Notes</h2>
+                <form id="notesForm" action="save_note.php" method="POST">
+                    <label for="noteTitle">Note Title:</label>
+                    <input type="text" id="noteTitle" name="noteTitle" required>
+                    
+                    <label for="noteContent">Note Content:</label>
+                    <textarea id="noteContent" name="noteContent" rows="4" required></textarea>
+                    
+                    <button type="submit">Share Note</button>
+                </form>
+                <div id="notesLog"></div>
+            </div>
+            
+            
+
+
+            <!-- Update Students Section -->
+            <div id="updateStudents" class="section" style="display: none;">
+                <h2>ADD Students</h2>
+                <form id="updateStudentForm" method="post" action="add_students.php">
+                    <label for="courseUpdate">Course:</label>
+                    <select name="courseUpdate" id="courseUpdate" required>
+                        <option value="">Select Course</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="M.Tech">M.Tech</option>
+                        <option value="MBA">MBA</option>
+                        <option value="BBA">BBA</option>
+                        <option value="BCA">BCA</option>
+                        <option value="MCA">MCA</option>
+                    </select>
+                
+                    <label for="branchUpdate">Branch:</label>
+                    <select name="branchUpdate" id="branchUpdate" required>
+                        <option value="">Select Branch</option>
+                        <option value="CSE">CSE</option>
+                        <option value="ECE">ECE</option>
+                        <option value="ME">ME</option>
+                        <option value="CE">CE</option>
+                        <option value="EE">EE</option>
+                        <option value="IT">IT</option>
+                    </select>
+                
+                    <label for="yearUpdate">Year:</label>
+                    <select name="yearUpdate" id="yearUpdate" required>
+                        <option value="">Select Year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+                
+                    <label for="sectionUpdate">Section:</label>
+                    <select name="sectionUpdate" id="sectionUpdate" required>
+                        <option value="">Select Section</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                    </select>
+                
+                    <label for="rollNumberUpdate">Roll Number:</label>
+                    <input type="text" name="rollNumberUpdate" id="rollNumberUpdate" required>
+                
+                    <label for="studentNameUpdate">Student Name:</label>
+                    <input type="text" name="studentNameUpdate" id="studentNameUpdate" required>
+                
+                    <button type="submit">ADD Students</button>
+                </form>
+                
+                <div id="studentList"></div>
+            </div>
+        </div>
+        <script>
+            // Update students data based on the form input
+document.getElementById('updateStudentForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    fetch('add_students.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // Show success message from PHP
+        this.reset(); // Reset the form fields
+        updateStudentList(); // Optionally refresh student list
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+        </script>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Ambalika Institute of Management and Technology</h3>
+            <p>Address: Mohanlalganj, Lucknow, Uttar Pradesh 226301</p>
+            <div class="socials">
+                <a href="https://facebook.com/ambalika" target="_blank">Facebook</a> |
+                <a href="https://twitter.com/ambalika" target="_blank">Twitter</a> |
+                <a href="https://linkedin.com/school/ambalika-institute" target="_blank">LinkedIn</a> |
+                <a href="https://instagram.com/ambalika" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Code -->
+    <script>
+        // Global storage for students
+        let studentsData = {};
+
+        // Show sections based on menu clicks
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+        }
+
+        // Update students data based on the form input
+        document.getElementById('updateStudentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let course = document.getElementById('courseUpdate').value;
+            let branch = document.getElementById('branchUpdate').value;
+            let year = document.getElementById('yearUpdate').value;
+            let section = document.getElementById('sectionUpdate').value;
+            let rollNumber = document.getElementById('rollNumberUpdate').value;
+            let studentName = document.getElementById('studentNameUpdate').value;
+
+            // Check if the course, branch, year, and section already exist
+            if (!studentsData[course]) studentsData[course] = {};
+            if (!studentsData[course][branch]) studentsData[course][branch] = {};
+            if (!studentsData[course][branch][year]) studentsData[course][branch][year] = {};
+            if (!studentsData[course][branch][year][section]) studentsData[course][branch][year][section] = {};
+
+            // Add student data
+            studentsData[course][branch][year][section][rollNumber] = studentName;
+
+            alert(`Student ${studentName} added successfully!`);
+            updateStudentList();
+        });
+
+        // Update student list
+        function updateStudentList() {
+            let studentList = document.getElementById('studentList');
+            studentList.innerHTML = '';
+
+            for (let course in studentsData) {
+                for (let branch in studentsData[course]) {
+                    for (let year in studentsData[course][branch]) {
+                        for (let section in studentsData[course][branch][year]) {
+                            for (let rollNumber in studentsData[course][branch][year][section]) {
+                                let studentName = studentsData[course][branch][year][section][rollNumber];
+                                studentList.innerHTML += `<p>${course} ${branch} Year ${year} Section ${section} - Roll No: ${rollNumber}, Name: ${studentName}</p>`;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Populate the attendance form based on updated student data
+        document.getElementById('dummyAttendanceForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let tableBody = document.getElementById('studentRows');
+            tableBody.innerHTML = '';
+
+            let course = document.getElementById('courseUpdate').value;
+            let branch = document.getElementById('branchUpdate').value;
+            let year = document.getElementById('yearUpdate').value;
+            let section = document.getElementById('sectionUpdate').value;
+
+            if (studentsData[course] && studentsData[course][branch] && studentsData[course][branch][year] && studentsData[course][branch][year][section]) {
+                let students = studentsData[course][branch][year][section];
+
+                Object.keys(students).sort().forEach(rollNumber => {
+                    let studentName = students[rollNumber];
+                    tableBody.innerHTML += `
+                        <tr>
+                            <td>${rollNumber}</td>
+                            <td>${studentName}</td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                    `;
+                });
+            } else {
+                alert('No students found for the selected course, branch, year, and section.');
+            }
+        });
+        document.getElementById('notesForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const noteTitle = document.getElementById('noteTitle').value;
+            const noteContent = document.getElementById('noteContent').value;
+
+            sharedNotes.push({ title: noteTitle, content: noteContent });
+            alert('Note shared successfully!');
+            displayNotes();
+            this.reset();
+        });
+
+        // Display shared notes
+        function displayNotes() {
+            const notesLog = document.getElementById('notesLog');
+            notesLog.innerHTML = '';
+
+            sharedNotes.forEach(note => {
+                notesLog.innerHTML += `<h4>${note.title}</h4><p>${note.content}</p>`;
+            });
+        }
+
+        // Admin login
+        document.getElementById('adminLoginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+
+            // Example credentials
+            if (username === 'admin' && password === 'admin123') {
+                document.getElementById('adminContent').style.display = 'block';
+                alert('Login successful!');
+            } else {
+                alert('Invalid username or password!');
+            }
+        });
+
+        document.getElementById('complaintForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const complaintText = document.getElementById('complaintText').value;
+
+    fetch('save_complaint.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+            complaintText: complaintText
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // Show success message
+        document.getElementById('complaintForm').reset(); // Reset the form
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+
+document.getElementById('notesForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const noteTitle = document.getElementById('noteTitle').value;
+    const noteContent = document.getElementById('noteContent').value;
+
+    fetch('save_note.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+            noteTitle: noteTitle,
+            noteContent: noteContent
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // Show success message
+        document.getElementById('notesForm').reset(); // Reset the form
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+        
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CR & Admin Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #3e248c, #20a339);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .login-wrapper {
+            width: 400px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .login-header {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+
+        .login-header div {
+            width: 50%;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-header div:hover {
+            background-color: #444;
+        }
+
+        .slider {
+            position: absolute;
+            top: 42px;
+            left: 0;
+            height: 4px;
+            width: 50%;
+            background-color: #f7d794;
+            transition: left 0.3s ease;
+        }
+
+        .login-forms {
+            display: flex;
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 800px; /* 2 forms = 400px each */
+            transition: left 0.3s ease;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #1f1f1f;
+            text-align: center;
+        }
+
+        h2 {
+            color: #f7d794;
+            margin-bottom: 25px;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            color: #f7f1e3;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            transition: background-color 0.2s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            background-color: #e0e0e0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #ff793f;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff5252;
+        }
+
+        .link {
+            display: block;
+            margin-top: 15px;
+            color: #74b9ff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: #ff5252;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* Icons for input fields */
+        .input-container {
+            position: relative;
+        }
+
+        .input-container input {
+            padding-left: 40px;
+        }
+
+        .input-container .icon {
+            position: absolute;
+            left: 10px;
+            top: 12px;
+            font-size: 18px;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .login-wrapper {
+                width: 90%;
+            }
+
+            .login-forms {
+                width: 200%;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            .slider {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="login-header">
+            <div onclick="toggleLogin('CR')">CR Login</div>
+            <div onclick="toggleLogin('Admin')">Admin Login</div>
+        </div>
+        <div class="slider" id="slider"></div>
+
+        <div class="login-forms" id="loginForms">
+            <!-- CR Login -->
+            <div class="container">
+                <h2>Class Representative Login</h2>
+                <div class="input-container">
+                    <span class="icon">👤</span>
+                    <input type="text" id="crUsername" placeholder="Enter CR User ID">
+                </div>
+                <div class="input-container">
+                    <span class="icon">🔒</span>
+                    <input type="password" id="crPassword" placeholder="Enter CR Password">
+                </div>
+                <button onclick="login('CR')">Login</button>
+                <span class="link" onclick="showChangePassword('CR')">Change Password</span>
+                <div class="error" id="crError"></div>
+            </div>
+
+            <!-- Admin Login -->
+            <div class="container">
+                <h2>Admin Login</h2>
+                <div class="input-container">
+                    <span class="icon">👤</span>
+                    <input type="text" id="adminUsername" placeholder="Enter Admin User ID">
+                </div>
+                <div class="input-container">
+                    <span class="icon">🔒</span>
+                    <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+                </div>
+                <button onclick="login('Admin')">Login</button>
+                <span class="link" onclick="showChangePassword('Admin')">Change Password</span>
+                <div class="error" id="adminError"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const users = {
+            'Admin': { userId: 'admin123', password: 'adminPass' },
+            'CR': { userId: 'cr001', password: 'crPass' }
+        };
+
+        const slider = document.getElementById('slider');
+        const loginForms = document.getElementById('loginForms');
+
+        // Toggle login forms between CR and Admin
+        function toggleLogin(role) {
+            if (role === 'CR') {
+                slider.style.left = '0';
+                loginForms.style.left = '0';
+            } else if (role === 'Admin') {
+                slider.style.left = '50%';
+                loginForms.style.left = '-400px';
+            }
+        }
+
+        // Login validation
+        function login(role) {
+            const userId = document.getElementById(`${role.toLowerCase()}Username`).value;
+            const password = document.getElementById(`${role.toLowerCase()}Password`).value;
+            const errorElement = document.getElementById(`${role.toLowerCase()}Error`);
+            errorElement.textContent = '';
+
+            if (userId === users[role].userId && password === users[role].password) {
+                alert(`${role} login successful!`);
+                if(role==='CR'){
+                    window.location.href='main.html';
+                }else if(role==='Admin'){
+                    window.location.href='admin.html';
+                }
+            } else {
+                errorElement.textContent = 'Invalid User ID or Password';
+            }
+        }
+
+        // Password change function
+        function showChangePassword(role) {
+            const userId = prompt(`Enter your current ${role} User ID:`);
+            const oldPassword = prompt('Enter your current password:');
+            if (userId === users[role].userId && oldPassword === users[role].password) {
+                const newPassword = prompt('Enter your new password:');
+                users[role].password = newPassword;
+                alert('Password changed successfully!');
+            } else {
+                alert('Invalid User ID or Password');
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F0F8FF; /* Light background color */
+    color: #212529; /* Dark text color */
+}
+
+
+/* Container Styling */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+/* Menu Styling */
+.menu {
+    flex: 1;
+    padding: 10px;
+    background-color: #E9ECEF; /* Light gray for menu */
+}
+
+.menu button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #009688; /* Teal buttons */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.1em; /* Increased font size */
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+
+.menu button:hover {
+    background-color: #00796B; /* Darker teal on hover */
+}
+
+/* Section Styling */
+.section {
+    display: none;
+    flex: 3;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section.active {
+    display: block;
+}
+
+.section h2 {
+    margin-bottom: 15px;
+    font-size: 1.8em; /* Increased font size */
+}
+
+/* Form Elements */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600; /* Bold weight for labels */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em; /* Set a consistent font size */
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+    background-color: #FF5722; /* Orange for submit buttons */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em; /* Increased font size */
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #DA4425; /* Darker orange on hover */
+}
+
+/* Attendance Log, Complaint Log, Notes Log Styling */
+#attendanceLog, #complaintLog, #notesLog {
+    margin-top: 20px;
+    background-color: #F8F9FA;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #009688; /* Teal background for footer */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    bottom: 0px;
+    margin-top: 20px;
+    position: relative;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em; /* Increased font size */
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+/* Social Media Links */
+.socials {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.socials a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.socials a:hover {
+    text-decoration: underline;
+}
+
+/* Dummy Attendance Section */
+#dummyAttendance {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+#dummyAttendanceForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input Label Styling */
+#dummyAttendanceForm label {
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Date Input Styling */
+#lectureDate {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 1em; /* Consistent font size */
+}
+
+thead th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.1em;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Submit Button Styling */
+#dummyAttendanceForm button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#dummyAttendanceForm button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Table Hover Effect */
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em; /* Adjusted font size for smaller screens */
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+
+    .menu button {
+        font-size: 1em; /* Responsive font size */
+    }
+
+    .section form {
+        padding: 15px;
+    }
+
+    table th, table td {
+        padding: 10px; /* Adjusted padding */
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em; /* Adjusted font size */
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+
+    .menu button {
+        font-size: 0.9em; /* Responsive font size */
+    }
+
+    .section form {
+        padding: 10px;
+    }
+
+    footer h3 {
+        font-size: 1.3em; /* Adjusted font size */
+    }
+
+    footer p {
+        font-size: 0.9em; /* Adjusted font size */
+    }
+
+    .socials a {
+        font-size: 0.9em; /* Adjusted font size */
+    }
+}

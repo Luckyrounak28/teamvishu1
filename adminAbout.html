@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .logo img {
+            margin-top: -20px;
+            width: 150px;
+        }
+    
+        header {
+            display: flex;
+            background-color: rgb(0, 150, 136);
+            justify-content: space-between;
+            padding: 10px;
+            color: white;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .logo {
+            flex: 1;
+        }
+    
+        .title {
+            flex: 2;
+            text-align: center;
+        }
+    
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+    
+        nav {
+            flex: 1;
+        }
+    
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+    
+        nav ul li {
+            margin: 0;
+        }
+    
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            transition: background-color 0.3s ease;
+        }
+    
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        main {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .team-section {
+            max-width: 1000px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .team-section h2 {
+            font-size: 32px;
+            color: #ff793f;
+            margin-bottom: 40px;
+        }
+
+        .team-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-profile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-image {
+            flex: 1;
+            max-width: 120px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-details {
+            flex: 3;
+            padding-left: 20px;
+        }
+
+        .profile-details h3 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .team-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-details {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo-transparent-png.png" alt="logo">
+        </div>
+        <div class="title">
+            <h1>CR Management System</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="adminAbout.html">About</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="team-section">
+            <h2>Meet Our Team</h2>
+            
+            <div class="team-profile">
+                <div class="profile-image">
+                    <img src="prity.jpg" alt="Prity Kumari Pandey">
+                </div>
+                <div class="profile-details">
+                    <h3>Prity Kumari Pandey</h3>
+                    <p>Prity is the web designer of the team. She is responsible for designing all the web pages of the CR Management System, ensuring that it looks appealing and user-friendly.</p>
+                </div>
+            </div>
+
+            <div class="team-profile">
+                <div class="profile-image">
+                    <img src="vishal.jpg" alt="Vishal Kumar">
+                </div>
+                <div class="profile-details">
+                    <h3>Vishal Kumar</h3>
+                    <p>Vishal is a backend developer, responsible for managing the server-side logic and database of the CR Management System.</p>
+                </div>
+            </div>
+
+            <div class="team-profile">
+                <div class="profile-image">
+                    <img src="mohit.jpg" alt="Mohit Yadav">
+                </div>
+                <div class="profile-details">
+                    <h3>Mohit Yadav</h3>
+                    <p>Mohit focuses on frontend development, ensuring that the user interface is interactive and engaging for users.</p>
+                </div>
+            </div>
+            <div class="team-profile">
+                <div class="profile-image">
+                    <img src="vikash.jpg" alt="Vikash Yadav">
+                </div>
+                <div class="profile-details">
+                    <h3>Vikash Yadav</h3>
+                    <p>Vikash handles database management and ensures that all data is securely stored and efficiently retrieved when needed.</p>
+                </div>
+            </div>
+            <div class="team-profile">
+                <div class="profile-image">
+                    <img src="https://via.placeholder.com/150" alt="Adarsh Yadav">
+                </div>
+                <div class="profile-details">
+                    <h3>Adarsh Yadav</h3>
+                    <p>Adarsh is in charge of quality assurance, testing the system to make sure it runs smoothly without any bugs.</p>
+                </div>
+            </div>
+
+          
+        </div>
+    </main>
+</body>
+</html>
